@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
 // components 
-import { FaCartShopping } from "react-icons/fa6";
+import Item from './Item/Item'
+import { FaShoppingCart } from "react-icons/fa";
 import Loader from './components/Loader/Loader'
 // styles 
 import { Wrapper } from './App.styles'
@@ -29,7 +30,7 @@ const App = () => {
 
     const getTotalItens = () => null;
 
-    const handleAddToCart = () => null;
+    const handleAddToCart = (clickeditem: CartItemType) => null;
 
     const handledRemoveFromCart = () => null;
 
@@ -39,7 +40,15 @@ const App = () => {
 
 
   return (
-    <div className="App">s</div>
+    <Wrapper>
+      <div className='itens'>
+        {data?.map(item =>(
+          <div className='item' key={item.id}>
+            <Item item={item} handleAddToCart={handleAddToCart}/>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
   )
 }
 
